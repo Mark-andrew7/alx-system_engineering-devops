@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod +x cwd
+chmod 764 hello
