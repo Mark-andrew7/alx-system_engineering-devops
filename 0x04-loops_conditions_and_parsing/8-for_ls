@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#script that displays  content of current dir in list format
+
+list=$(ls)
+for n in $list;
+do
+	echo "$n" | cut -d "-" -f2
+done
