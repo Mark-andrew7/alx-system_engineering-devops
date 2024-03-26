@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #Configure your Nginx server so that /redirect_me is redirecting to another page.
 
-apt-get update
-apt-get -y install nginx
-ufw allow "Nginx HTTP"
-REDIRECT_URL="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-NGINX_CONFIG="/etc/nginx/sites-available/default"
-cp "$NGINX_CONFIG" "${NGINX_CONFIG}_backup"
-REDIRECT_RULE="location /redirect_me { return 301 $REDIRECT_URL; }"
-sed -i "s|location \/ {|$REDIRECT_RULE|" "$NGINX_CONFIG"
-service nginx restart
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo ufw allow 'Nginx http'
+
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+string_replacement="server_name _;\n\trewrite ^\/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4;"
+sudo sed -i "s/server_name _;/$string_replacement/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
