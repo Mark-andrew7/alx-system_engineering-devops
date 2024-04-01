@@ -6,11 +6,11 @@ sudo apt-get install -y haproxy
 
 server_config=\
 "
-frontend http_front_1
+frontend lb-frontend
     bind *:80
     mode http
-    default_backend http_back_1
-backend http_back_1
+    default_backend lb-backend
+backend lb-backend
     balance roundrobin
     server 254938-web-01 52.91.150.164 check
     server 254938-web-02 18.204.16.72 check
