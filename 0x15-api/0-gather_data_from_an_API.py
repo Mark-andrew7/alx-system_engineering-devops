@@ -21,7 +21,7 @@ if __name__ == "__main__":
     done_tasks = sum(task.get('completed') for task in todo_data)
     emp_name = emp_data.get("name")
 
-    print("Employee {} is done with tasks ({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         emp_name, done_tasks, total_tasks))
 
     for task in todo_data:
