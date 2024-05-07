@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Queries reddit api and returns number of subs
+"""
 
 import requests
 
