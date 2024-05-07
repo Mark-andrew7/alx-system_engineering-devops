@@ -13,14 +13,14 @@ def number_of_subscribers(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         return 0
 
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    user_agent = "User-agent": "custom"
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    user_agent = 'User-agent': 'custom'
     response = requests.get(url, header=user_agent)
     res = response.json()
 
     try:
-        data = res.requests.get("data")
-        subs = data.requests.get("subsribers")
+        data = res.requests.get('data')
+        subs = data.requests.get('subsribers')
         return subs
 
     except Exception:
