@@ -1,17 +1,6 @@
-# 0-strace_is_your_friend.pp
+#Fixed internal server error with strace
 
-exec { 'fix-apache-500-error':
-  command => 'curl -sI 127.0.0.1:80',
-  path    => ['/usr/bin'],
-  creates => '/tmp/curl_output.txt',
-}
-
-file { '/tmp/curl_output.txt':
-  ensure => file,
-}
-
-service { 'apache2':
-  ensure    => 'running',
-  enable    => true,
-  subscribe => File['fix-apache-500-error'],
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
